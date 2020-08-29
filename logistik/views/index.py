@@ -1,5 +1,5 @@
-from logistik import app
 from flask import render_template
+from logistik import app
 from . import login_required
 
 

@@ -1,9 +1,9 @@
-from logistik import app, db
-from logistik.models import User
-from flask import render_template, request, redirect, make_response
-from sqlalchemy.exc import IntegrityError
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
+from sqlalchemy.exc import IntegrityError
+from flask import render_template, request, redirect, make_response
+from logistik import app, db
+from logistik.models import User
 
 
 @app.route('/login')
