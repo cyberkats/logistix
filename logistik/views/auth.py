@@ -59,5 +59,4 @@ def create_user():
         # User name already taken
         return render_template('auth/new_user.html', is_taken=True, is_invalid=False)
 
-
     return redirect('/login')
