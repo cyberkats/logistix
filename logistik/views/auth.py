@@ -1,6 +1,6 @@
 from logistik import app, db
 from logistik.models import User
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, make_response
 from sqlalchemy.exc import IntegrityError
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
@@ -22,11 +22,11 @@ def authenticate():
 
     user = User.query.filter_by(name=name).first()
 
-    print(user.password)
-
     try:
         ph.verify(user.password, password)
-        return redirect('/', 302)
+        resp = make_response(redirect('/', 302))
+        resp.set_cookie('user', str(user.name))
+        return resp
     except (AttributeError, VerifyMismatchError):
         # Invalid user or password
         return render_template('auth/login.html', is_invalid=True)
