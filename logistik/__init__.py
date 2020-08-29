@@ -10,4 +10,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # The views must be imported after app to prevent circular imports
-from logistik import views  # pylint: disable=wrong-import-position
+from logistik import views
