@@ -3,8 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Logistik</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEWI5wXm8uyn0gKR3rhDq6B1snpnAj4JA&callback=initMap&libraries=&v=weekly" defer></script>
+    <script src="{{ url_for('static', filename='map.js') }}" charset="utf-8"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
   <body>
-    <h1>Hello {{ name }}</h1>
+    <script type="text/javascript">
+      let lat = {{ lat }};
+      let long = {{ long }};
+    </script>
+    <div id="map"></div>
   </body>
 </html>
