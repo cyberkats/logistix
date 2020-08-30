@@ -1,5 +1,6 @@
 # Logistik
-A thingie thing
+
+A logistics asset tracking solution
 
 ## Developing
 
