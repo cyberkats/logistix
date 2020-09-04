@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <form action="/register" method="POST">
+              <div class="form-group">
+                <label for="Username1">Username*</label>
+                <input type="text" class="form-control {% if is_taken %} is-invalid {% endif %}" id="Username1" aria-describedby="Username1" placeholder="Enter username" name="name" required>
+
+                {% if is_taken %}
+                <div class="invalid-feedback">
+                  Username already taken.
+                </div>
+                {% endif %}
+              </div>
+
+
+              <div class="form-group">
+                <label for="Password1">Password*</label>
+                <input type="password" class="form-control {% if is_invalid %} is-invalid {% endif %}" id="Password1" placeholder="Enter password" name="password" required>
+              </div>
+
+              <div class="form-group">
+                <label for="Password1">Confirm Password*</label>
+                <input type="password" class="form-control {% if is_invalid %} is-invalid {% endif %}" id="Password1" placeholder="Confirm password" name="verify_password" required>
+                {% if is_invalid %}
+                <div class="invalid-feedback">
+                  Passwords don't match.
+                </div>
+                {% endif %}
+
+                <small id="SecurityWarning" class="form-text text-muted">* Mandatory fields</small>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Register</button>
+
+              <div class="form-footer">
+                <p> Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
