@@ -32,13 +32,13 @@ def authenticate():
         return render_template('auth/login.html', is_invalid=True)
 
 
-@app.route('/new_user')
-def new_user():
+@app.route('/register')
+def register():
     '''Render the new user page'''
-    return render_template('auth/new_user.html', is_taken=False, is_invalid=False)
+    return render_template('auth/register.html', is_taken=False, is_invalid=False)
 
 
-@app.route('/new_user', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def create_user():
     '''Create a new user from a post request form'''
     ph = PasswordHasher()
@@ -48,7 +48,7 @@ def create_user():
     verify_password = request.form.get('verify_password')
 
     if password != verify_password:
-        return render_template('auth/new_user.html', is_taken=False, is_invalid=True)
+        return render_template('auth/register.html', is_taken=False, is_invalid=True)
 
     user = User(name=name, password=ph.hash(password))
     db.session.add(user)
@@ -57,6 +57,6 @@ def create_user():
         db.session.commit()
     except IntegrityError:
         # User name already taken
-        return render_template('auth/new_user.html', is_taken=True, is_invalid=False)
+        return render_template('auth/register.html', is_taken=True, is_invalid=False)
 
     return redirect('/login')
