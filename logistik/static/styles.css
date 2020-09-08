@@ -1,0 +1,32 @@
+.jumbotron {
+  background-color: #99003d;
+  color: #ffffff;
+  padding: 100px 25px;
+}
+
+.container {
+  padding: 60px 50px;
+}
+
+.navbar {
+  margin-bottom: 0;
+  background-color: #404040;
+  color: #cc3300;
+}
+
+.nav-link, .navbar-brand {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.nav-link {
+  margin-right: 1em !important;
+}
+
+.nav-link:hover {
+  color: #ff6666;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
