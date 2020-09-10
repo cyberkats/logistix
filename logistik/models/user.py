@@ -8,7 +8,7 @@ class User(db.Model):
     last_name = db.Column(db.String(), nullable=False)
     first_name = db.Column(db.String(), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
-    status_id = db.Column(db.Integer, db.ForeinKey('status.id'), nullable=False)
+    status_id = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
 
     def __repr__(self):
         return f'User {self.name}'
