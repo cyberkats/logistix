@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 
 {% block body %}
+<div class="container-fluid">
+  <div class="row">
+  {% include "dashboard/sidebar.html" %}
 
-<div class="col-9">
-  <h4>Asset Tracking Dashboard</h4>
+    <div class="col-9">
+      <h4>Asset Tracking Dashboard</h4>
 
-    <div class="card mt-4">
-      <div class="card-header font-weight-bold">Asset Listing</div>
-        <div class="card-body text-center">
-          <p class="card-text">Insert table of asset listing</p>
-        </div>
+      <div class="card mt-4">
+        <div class="card-header font-weight-bold">Asset Listing</div>
+          <div class="card-body text-center">
+            <p class="card-text">Insert table of asset listing</p>
+          </div>
       </div>
 
       <div class="card mt-4">
@@ -25,17 +28,16 @@
               <a href="#">Advanced search options</a></p>
             </div>
           </form>
-            </div>
         </div>
+      </div>
 
-        <div class="card mt-4">
-          <div class="card-header font-weight-bold">Asset Map</div>
-          <div class="card-body text-center">
-            <p class="card-text">Insert asset map</p>
-          </div>
+      <div class="card mt-4">
+        <div class="card-header font-weight-bold">Asset Map</div>
+        <div class="card-body text-center">
+          <p class="card-text">Insert asset map</p>
         </div>
       </div>
     </div>
+  </div>
 </div>
-
 {% endblock %}
