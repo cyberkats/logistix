@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+  {% include "dashboard/sidebar.html" %}
+
+    <div class="col-9">
+      <h4>Asset Tracking Dashboard</h4>
+
+      <div class="card mt-4">
+        <div class="card-header font-weight-bold">Asset Listing</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-3">
+                <div class="card" style="width: 20rem;">
+                  <div class="card-body asset-card-body">
+                    <h5 class="card-title text-center font-weight-bold">AssetID: GE16890362</h5>
+                    <p class="card-text"><b>Description:</b> Hino 500 Series FG2628: 12 Tonne 14 Pallet Curtain Truck </p>
+                    <p class="card-text"><b>Default location:</b> Melbourne, Victoria</p>
+                    <p class="card-text"><b>Current location:</b> Melbourne, Victoria</p>
+                    <p class="card-text"><b>Status:</b> Available</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card" style="width: 20rem;">
+                  <div class="card-body asset-card-body">
+                    <h5 class="card-title text-center font-weight-bold">AssetID: KP32608977</h5>
+                    <p class="card-text"><b>Description:</b> Fuso Fighter 2427 Refrigerated Van (Auto)</p>
+                    <p class="card-text"><b>Default location:</b> Geelong, Victoria</p>
+                    <p class="card-text"><b>Current location:</b> Geelong, Victoria</p>
+                    <p class="card-text"><b>Status:</b> Available</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header font-weight-bold">Asset search</div>
+        <div class="card-body">
+          <form>
+            <div class= "form-group">
+              <input type="text" placeholder="Search by tracking code" name="search">
+              <button type="submit">Search</button>
+            </div>
+
+            <div class="form-footer">
+              <p><a href="#">Advanced search options</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header font-weight-bold">Asset Map</div>
+        <div class="card-body text-center">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

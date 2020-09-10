@@ -30,3 +30,47 @@
 .navbar-collapse {
   justify-content: flex-end;
 }
+
+.list-group-sidebar .list-group-item {
+  color: #cc3300;
+}
+
+.list-group-sidebar .list-group-item:hover {
+  color: #ff6666;
+}
+
+.list-group-sidebar .list-group-item.active {
+  color:#ffffff;
+  background-color:#404040;
+}
+
+.list-group-sidebar-collapse {
+  justify-content: flex-end;
+}
+
+.card {
+  margin-bottom: 10px;
+}
+
+.card-header {
+  background-color:#d9d9d9;
+}
+
+.card-body {
+  background-color:#f2f2f2;
+  padding: 30px 10px;
+}
+
+.card-title {
+  color:#000080;
+}
+
+.asset-card-body {
+  background-color:#ffffe6;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+  height: 40rem;
+}

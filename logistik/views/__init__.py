@@ -16,3 +16,4 @@ def login_required(view):
 # pylint: disable=wrong-import-position
 from . import index
 from . import auth
+from . import dashboard
