@@ -61,6 +61,14 @@
   padding: 30px 10px;
 }
 
+.card-title {
+  color:#000080;
+}
+
+.asset-card-body {
+  background-color:#ffffe6;
+}
+
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
