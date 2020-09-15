@@ -25,7 +25,7 @@ class AssetType(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
     type = db.Column(db.String(), nullable=False)
-    assets = db.relationship('Asset', backref='assettype', lazy=True)
+    assets = db.relationship('Asset', backref='asset_type', lazy=True)
 
 
 class Location(db.Model):
@@ -41,7 +41,8 @@ class Status(db.Model):
     description = db.Column(db.String(), nullable=False)
     note = db.Column(db.String(), nullable=True)
     assets = db.relationship('Asset', backref='status', lazy=True)
-    users = db.relationship('User', backref='satus', lazy=True)
+    users = db.relationship('User', backref='status', lazy=True)
+
 
 class Asset(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,5 +50,5 @@ class Asset(db.Model):
     location = db.Column(db.Integer, db.ForeignKey(
         'location.id'), nullable=True)
     asset_type = db.Column(db.Integer, db.ForeignKey(
-        'assettype.id'), nullable=True)
+        'asset_type.id'), nullable=True)
     status = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
