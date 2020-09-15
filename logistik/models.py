@@ -21,16 +21,6 @@ class Role(db.Model):
     users = db.relationship('User', backref='role', lazy=True)
 
 
-class Asset(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.String(), nullable=False)
-    location = db.Column(db.Integer, db.ForeignKey(
-        'location.id'), nullable=False)
-    asset_type = db.Column(db.Integer, db.ForeignKey(
-        'assettype.id'), nullable=False)
-    status = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
-
-
 class AssetType(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
@@ -52,3 +42,12 @@ class Status(db.Model):
     note = db.Column(db.String(), nullable=True)
     assets = db.relationship('Asset', backref='status', lazy=True)
     users = db.relationship('User', backref='satus', lazy=True)
+
+class Asset(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(), nullable=False)
+    location = db.Column(db.Integer, db.ForeignKey(
+        'location.id'), nullable=True)
+    asset_type = db.Column(db.Integer, db.ForeignKey(
+        'assettype.id'), nullable=True)
+    status = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
