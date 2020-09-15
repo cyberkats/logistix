@@ -26,14 +26,16 @@ class Status(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.String(), nullable=False)
     description = db.Column(db.String(), nullable=False)
-    note = db.Column(db.String(), nullable=True)
+    note = db.Column(db.String())
 
 
 class Asset(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
-    status = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
-    location = db.Column(db.Integer, db.ForeignKey(
+    status = db.Column(db.Integer, db.ForeignKey('status.id'))
+    current_location = db.Column(db.Integer, db.ForeignKey(
+        'location.id'), nullable=True)
+    default_location = db.Column(db.Integer, db.ForeignKey(
         'location.id'), nullable=True)
     asset_type = db.Column(db.Integer, db.ForeignKey(
         'asset_type.id'), nullable=True)
