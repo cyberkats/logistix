@@ -21,7 +21,7 @@ class Role(db.Model):
     users = db.relationship('User', backref='role', lazy=True)
 
 
-class Assets(db.Model):
+class Asset(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
     location = db.Column(db.Integer, db.ForeignKey(
