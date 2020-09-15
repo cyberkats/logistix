@@ -8,6 +8,7 @@ def dashboard():
     assets = Asset.query.all()
     return render_template("dashboard/dashboard.html", assets=assets)
 
+
 @app.route("/new_asset")
 def new_asset():
 
