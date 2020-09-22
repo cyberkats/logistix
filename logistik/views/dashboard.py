@@ -1,7 +1,7 @@
 from datetime import datetime
-from flask import render_template, request
+from flask import render_template, request, redirect
 from logistik import app, db
-from logistik.models import Asset
+from logistik.models import Asset, Location, Status
 
 
 @app.route("/dashboard")
@@ -25,17 +25,22 @@ def create_asset():
     asset_type = request.form.get('asset_type')
     status = request.form.get('status')
 
-    default_location = Location(latitude=default_location_lat, longitude=default_location_long)
+    default_location = Location(
+        latitude=default_location_lat, longitude=default_location_long)
+    current_location = Location(
+        latitude=current_location_lat, longitude=current_location_long)
     db.session.add(default_location)
-
-    current_location = Location(latitude=current_location_lat, longitude=current_location_long)
     db.session.add(current_location)
+    db.session.commit()
 
-    status = Status(time=datetime.now().strftime("%Y-%m-%d %H:%M:%S"), description=status)
+    status = Status(time=datetime.now().strftime(
+        "%Y-%m-%d %H:%M:%S"), description=status)
     db.session.add(status)
+    db.session.commit()
 
-    asset = Asset(description=description,
-                  asset_type=asset_type, status=status, default_location=default_location, current_location=current_location)
+    asset = Asset(description=description, status=status.id,
+                  default_location=default_location.id, current_location=current_location.id)
+
     db.session.add(asset)
     db.session.commit()
 
