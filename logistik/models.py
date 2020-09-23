@@ -18,7 +18,7 @@ class AssetType(db.Model):
 
 class Location(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    latitiude = db.Column(db.Float(), nullable=False)
+    latitude = db.Column(db.Float(), nullable=False)
     longitude = db.Column(db.Float(), nullable=False)
 
 
@@ -32,10 +32,10 @@ class Status(db.Model):
 class Asset(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
-    status = db.Column(db.Integer, db.ForeignKey('status.id'))
-    current_location = db.Column(db.Integer, db.ForeignKey(
-        'location.id'), nullable=True)
+    status = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
     default_location = db.Column(db.Integer, db.ForeignKey(
+        'location.id'), nullable=True)
+    current_location = db.Column(db.Integer, db.ForeignKey(
         'location.id'), nullable=True)
     asset_type = db.Column(db.Integer, db.ForeignKey(
         'asset_type.id'), nullable=True)

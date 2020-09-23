@@ -9,42 +9,45 @@
       <div class="card">
         <div class="card-header font-weight-bold">Add a new asset</div>
         <div class="card-body">
-          <form>
+          <form method="POST">
+
             <div class="form-group">
-              <label for="AssetID">Asset Tracking Code*</label>
-              <input type="text" class="form-control" id="AssetID" placeholder="Enter asset tracking code" required>
+              <label for="AssetDescription">Asset Description*</label>
+              <input name="description" type="text" class="form-control" id="AssetDescription"
+                placeholder="Enter asset description" required>
             </div>
 
             <div class="form-group">
-                <label for="AssetDescription">Asset Description*</label>
-                <input type="text" class="form-control" id="AssetDescription" placeholder="Enter asset description" required>
+              <label for="DefaultLocation">Default Location*</label>
+              <input name="default_location_lat" type="text" class="form-control" id="DefaultLocation"
+                placeholder="Enter asset latitude" required>
+              <input name="default_location_long" type="text" class="form-control" id="DefaultLocation"
+                placeholder="Enter asset longitude" required>
             </div>
 
             <div class="form-group">
-                <label for="DefaultLocation">Default Location*</label>
-                <input type="text" class="form-control" id="DefaultLocation" placeholder="Enter asset default location" required>
+              <label for="CurrentLocation">Current Location*</label>
+              <input name="current_location_lat" type="text" class="form-control" id="CurrentLocation"
+                placeholder="Enter asset latitude" required>
+              <input name="current_location_long" type="text" class="form-control" id="CurrentLocation"
+                placeholder="Enter asset longitude" required>
             </div>
 
             <div class="form-group">
-                <label for="CurrentLocation">Current Location*</label>
-                <input type="text" class="form-control" id="CurrentLocation" placeholder="Enter asset current location" required>
-            </div>
-
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose current status</button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-                <a class="dropdown-item" href="#">Available</a>
-                <a class="dropdown-item" href="#">Faulty</a>
-                <a class="dropdown-item" href="#">Moved</a>
-                <a class="dropdown-item" href="#">Lost</a>
-              </div>
+              <label for="Status">Status</label>
+              <select class="custom-select" id="Status" name="status" required>
+                <option value="Available">Available</option>
+                <option value="Faulty">Faulty</option>
+                <option value="Moved">Moved</option>
+                <option value="Lost">Lost</option>
+              </select>
             </div>
 
             <div class="form-group">
-                <br>
-                <label for="Notes">Notes (Optional)</label>
-                <input type="text" class="form-control" id="Notes" placeholder="Notes (optional)">
-                <small id="SecurityWarning" class="form-text text-muted">* Mandatory fields</small>
+              <br>
+              <label for="Notes">Notes (Optional)</label>
+              <input type="text" class="form-control" id="Notes" placeholder="Notes (optional)">
+              <small id="SecurityWarning" class="form-text text-muted">* Mandatory fields</small>
             </div>
 
             <button type="submit" class="btn btn-primary">Create Asset</button>
