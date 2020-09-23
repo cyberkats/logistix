@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  "use strict";
+
+  let map;
+
+  function initMap() {
+    var melbourne = {lat: -37.813611, lng: 144.963056};
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: melbourne,
+      zoom: 8
+    });
+
+    {% for asset in assets %}
+      new google.maps.Marker({
+        position: {
+          lat: {{asset.current_location.latitude}},
+          lng: {{asset.current_location.longitude}}
+        },
+        label: "{{asset.id}}",
+        map: map
+      })
+    {% endfor %}
+  }
+</script>
+
+
+<div id="map"></div>
