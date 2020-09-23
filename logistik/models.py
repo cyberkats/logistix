@@ -26,8 +26,15 @@ class Status(db.Model):
 class Asset(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
-    status = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
-    default_location = db.Column(db.Integer, db.ForeignKey(
-        'location.id'), nullable=True)
-    current_location = db.Column(db.Integer, db.ForeignKey(
-        'location.id'), nullable=True)
+
+    status_id = db.Column(db.Integer, db.ForeignKey('status.id'),
+                          nullable=False)
+    status = db.relationship('Status')
+
+    default_location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
+    default_location = db.relationship('Location',
+                                       foreign_keys=default_location_id)
+
+    current_location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
+    current_location = db.relationship('Location',
+                                       foreign_keys=current_location_id)
