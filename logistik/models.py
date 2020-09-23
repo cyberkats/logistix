@@ -18,9 +18,7 @@ class Location(db.Model):
 
 class Status(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    time = db.Column(db.String(), nullable=False)
     description = db.Column(db.String(), nullable=False)
-    note = db.Column(db.String())
 
 
 class Asset(db.Model):

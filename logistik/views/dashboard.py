@@ -1,4 +1,3 @@
-from datetime import datetime
 from flask import render_template, request, redirect
 from logistik import app, db
 from logistik.models import Asset, Location, Status
@@ -30,8 +29,7 @@ def create_asset():
         latitude=default_location_lat, longitude=default_location_long)
     current_location = Location(
         latitude=current_location_lat, longitude=current_location_long)
-    status = Status(time=datetime.now().strftime(
-        "%Y-%m-%d %H:%M:%S"), description=status)
+    status = Status(description=status)
     asset = Asset(description=description, status=status,
                   default_location=default_location, current_location=current_location)
 
