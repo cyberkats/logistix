@@ -22,7 +22,6 @@ def create_asset():
     default_location_long = request.form.get('default_location_long')
     current_location_lat = request.form.get('current_location_lat')
     current_location_long = request.form.get('current_location_long')
-    asset_type = request.form.get('asset_type')
     status = request.form.get('status')
 
     default_location = Location(
