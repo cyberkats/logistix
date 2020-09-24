@@ -1,4 +1,3 @@
-from datetime import datetime
 from flask import render_template, request, redirect
 from logistik import app, db
 from logistik.models import Asset, Location, Status
@@ -6,7 +5,8 @@ from logistik.models import Asset, Location, Status
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard/dashboard.html")
+    assets = Asset.query.all()
+    return render_template("dashboard/dashboard.html", assets=assets)
 
 
 @app.route("/new_asset")
@@ -28,17 +28,9 @@ def create_asset():
         latitude=default_location_lat, longitude=default_location_long)
     current_location = Location(
         latitude=current_location_lat, longitude=current_location_long)
-    db.session.add(default_location)
-    db.session.add(current_location)
-    db.session.commit()
-
-    status = Status(time=datetime.now().strftime(
-        "%Y-%m-%d %H:%M:%S"), description=status)
-    db.session.add(status)
-    db.session.commit()
-
-    asset = Asset(description=description, status=status.id,
-                  default_location=default_location.id, current_location=current_location.id)
+    status = Status(description=status)
+    asset = Asset(description=description, status=status,
+                  default_location=default_location, current_location=current_location)
 
     db.session.add(asset)
     db.session.commit()
