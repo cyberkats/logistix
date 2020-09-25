@@ -1,1 +1,1 @@
-web: gunicorn logistix:app
+web: gunicorn logistix:'create_app()'

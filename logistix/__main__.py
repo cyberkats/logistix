@@ -1,6 +1,4 @@
-from logistix import app
-from logistix import db
+from logistix import create_app
 
 if __name__ == '__main__':
-    db.create_all()
-    app.run()
+    create_app().run()

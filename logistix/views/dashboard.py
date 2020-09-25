@@ -1,29 +1,31 @@
-from flask import render_template, request, redirect, url_for
-from logistix import app, db
+from flask import render_template, request, redirect, url_for, Blueprint
+from logistix import db
 from logistix.models import Asset, Location, Status
 from logistix.views import login_required
 
-
-@app.route('/')
-def index():
-    return redirect('/dashboard')
+dashboard = Blueprint('dashboard', __name__)
 
 
-@app.route('/dashboard')
+@dashboard.route('/')
+def redir():
+    return redirect(url_for('dashboard.index'))
+
+
+@dashboard.route('/dashboard')
 @login_required
-def dashboard():
+def index():
     assets = Asset.query.all()
     return render_template('dashboard/dashboard.html', assets=assets)
 
 
-@app.route('/new_asset')
+@dashboard.route('/new_asset')
 @login_required
 def new_asset():
     is_invalid = request.args.get('is_invalid', default=False, type=bool)
     return render_template('dashboard/new_asset.html', is_invalid=is_invalid)
 
 
-@app.route('/new_asset', methods=['POST'])
+@dashboard.route('/new_asset', methods=['POST'])
 @login_required
 def create_asset():
 
