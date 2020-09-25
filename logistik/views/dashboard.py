@@ -3,6 +3,11 @@ from logistik import app, db
 from logistik.models import Asset, Location, Status
 
 
+@app.route("/")
+def index():
+    return redirect("/dashboard")
+
+
 @app.route("/dashboard")
 def dashboard():
     assets = Asset.query.all()

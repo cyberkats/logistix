@@ -24,7 +24,7 @@ def authenticate():
 
     try:
         ph.verify(user.password, password)
-        resp = make_response(redirect('/', 302))
+        resp = make_response(redirect('/dashboard', 302))
         resp.set_cookie('user', str(user.name))
         return resp
     except (AttributeError, VerifyMismatchError):
