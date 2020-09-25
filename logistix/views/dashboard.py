@@ -20,14 +20,16 @@ def dashboard():
 @login_required
 def new_asset():
     is_invalid = request.args.get('is_invalid', default=False, type=bool)
+    print(is_invalid)
     return render_template('dashboard/new_asset.html', is_invalid=is_invalid)
 
 
 @app.route('/new_asset', methods=['POST'])
 @login_required
 def create_asset():
-
     description = request.form.get('description')
+    status = request.form.get('status')
+
     try:
         default_location_lat = float(request.form.get('default_location_lat'))
         default_location_long = float(request.form.get('default_location_long'))
@@ -35,8 +37,6 @@ def create_asset():
         current_location_long = float(request.form.get('current_location_long'))
     except ValueError:
         return redirect(url_for('new_asset', is_invalid=True))
-
-    status = request.form.get('status')
 
     default_location = Location(
         latitude=default_location_lat, longitude=default_location_long)
@@ -49,4 +49,4 @@ def create_asset():
     db.session.add(asset)
     db.session.commit()
 
-    return redirect(url_for('new_asset', is_invalid=False))
+    return redirect(url_for('new_asset'))
