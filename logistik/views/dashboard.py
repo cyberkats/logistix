@@ -1,27 +1,41 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 from logistik import app, db
 from logistik.models import Asset, Location, Status
+from logistik.views import login_required
 
 
-@app.route("/dashboard")
+@app.route('/')
+def index():
+    return redirect('/dashboard')
+
+
+@app.route('/dashboard')
+@login_required
 def dashboard():
     assets = Asset.query.all()
-    return render_template("dashboard/dashboard.html", assets=assets)
+    return render_template('dashboard/dashboard.html', assets=assets)
 
 
-@app.route("/new_asset")
+@app.route('/new_asset')
+@login_required
 def new_asset():
-    return render_template("dashboard/new_asset.html")
+    is_invalid = request.args.get('is_invalid', default=False, type=bool)
+    return render_template('dashboard/new_asset.html', is_invalid=is_invalid)
 
 
-@app.route("/new_asset", methods=["POST"])
+@app.route('/new_asset', methods=['POST'])
+@login_required
 def create_asset():
 
     description = request.form.get('description')
-    default_location_lat = request.form.get('default_location_lat')
-    default_location_long = request.form.get('default_location_long')
-    current_location_lat = request.form.get('current_location_lat')
-    current_location_long = request.form.get('current_location_long')
+    try:
+        default_location_lat = float(request.form.get('default_location_lat'))
+        default_location_long = float(request.form.get('default_location_long'))
+        current_location_lat = float(request.form.get('current_location_lat'))
+        current_location_long = float(request.form.get('current_location_long'))
+    except ValueError:
+        return redirect(url_for('new_asset', is_invalid=True))
+
     status = request.form.get('status')
 
     default_location = Location(
@@ -35,4 +49,4 @@ def create_asset():
     db.session.add(asset)
     db.session.commit()
 
-    return redirect("/new_asset")
+    return redirect(url_for('new_asset', is_invalid=False))

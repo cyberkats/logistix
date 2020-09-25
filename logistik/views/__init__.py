@@ -13,7 +13,6 @@ def login_required(view):
         return view(*args, **kwargs)
     return wrapper
 
-# pylint: disable=wrong-import-position
-from . import index
+
 from . import auth
 from . import dashboard
