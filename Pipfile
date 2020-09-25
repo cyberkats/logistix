@@ -8,6 +8,7 @@ Flask = "*"
 Flask-SQLAlchemy = "*"
 argon2-cffi = "*"
 sqlalchemy = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"

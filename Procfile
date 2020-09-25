@@ -1,1 +1,1 @@
-web: python -m logistix
+web: gunicorn logistix:app
