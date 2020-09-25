@@ -2,8 +2,8 @@ from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 from sqlalchemy.exc import IntegrityError
 from flask import render_template, request, redirect, make_response, url_for
-from logistik import app, db
-from logistik.models import User
+from logistix import app, db
+from logistix.models import User
 
 
 @app.route('/login')

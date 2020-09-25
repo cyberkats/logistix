@@ -1,6 +1,6 @@
 from functools import wraps
 from flask import request, redirect, url_for
-from logistik.models import User
+from logistix.models import User
 
 
 def login_required(view):

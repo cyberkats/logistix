@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
-from logistik import app, db
-from logistik.models import Asset, Location, Status
-from logistik.views import login_required
+from logistix import app, db
+from logistix.models import Asset, Location, Status
+from logistix.views import login_required
 
 
 @app.route('/')

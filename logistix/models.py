@@ -1,4 +1,4 @@
-from logistik import db
+from logistix import db
 
 
 class User(db.Model):

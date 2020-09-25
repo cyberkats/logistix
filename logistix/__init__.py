@@ -5,9 +5,9 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URI', 'sqlite:///../logistik.db')
+    'DATABASE_URI', 'sqlite:///../logistix.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # The views must be imported after app to prevent circular imports
-from logistik import views
+from logistix import views

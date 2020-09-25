@@ -141,4 +141,4 @@ cython_debug/
 .vscode
 
 # SQLite db
-logistik.db
+logistix.db

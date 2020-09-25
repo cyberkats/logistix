@@ -1,5 +1,5 @@
-from logistik import app
-from logistik import db
+from logistix import app
+from logistix import db
 
 if __name__ == '__main__':
     db.create_all()

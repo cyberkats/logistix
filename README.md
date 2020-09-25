@@ -1,4 +1,4 @@
-# Logistik
+# LogistiX
 
 A logistics asset tracking solution
 
@@ -14,5 +14,5 @@ Run development server
 
 ```
 pipenv shell
-python -m logistik
+python -m logistix
 ```
