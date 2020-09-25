@@ -4,26 +4,26 @@ from logistik.models import Asset, Location, Status
 from logistik.views import login_required
 
 
-@app.route("/")
+@app.route('/')
 def index():
-    return redirect("/dashboard")
+    return redirect('/dashboard')
 
 
-@app.route("/dashboard")
+@app.route('/dashboard')
 @login_required
 def dashboard():
     assets = Asset.query.all()
-    return render_template("dashboard/dashboard.html", assets=assets)
+    return render_template('dashboard/dashboard.html', assets=assets)
 
 
-@app.route("/new_asset")
+@app.route('/new_asset')
 @login_required
 def new_asset():
     is_invalid = request.args.get('is_invalid', default=False, type=bool)
-    return render_template("dashboard/new_asset.html", is_invalid=is_invalid)
+    return render_template('dashboard/new_asset.html', is_invalid=is_invalid)
 
 
-@app.route("/new_asset", methods=["POST"])
+@app.route('/new_asset', methods=['POST'])
 @login_required
 def create_asset():
 
@@ -34,7 +34,7 @@ def create_asset():
         current_location_lat = float(request.form.get('current_location_lat'))
         current_location_long = float(request.form.get('current_location_long'))
     except ValueError:
-        return redirect(url_for("new_asset", is_invalid=True))
+        return redirect(url_for('new_asset', is_invalid=True))
 
     status = request.form.get('status')
 
@@ -49,4 +49,4 @@ def create_asset():
     db.session.add(asset)
     db.session.commit()
 
-    return redirect(url_for("new_asset", is_invalid=False))
+    return redirect(url_for('new_asset', is_invalid=False))
