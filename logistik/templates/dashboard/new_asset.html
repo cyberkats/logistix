@@ -19,18 +19,29 @@
 
             <div class="form-group">
               <label for="DefaultLocation">Default Location*</label>
-              <input name="default_location_lat" type="text" class="form-control" id="DefaultLocation"
+              <input name="default_location_lat" type="text" class="form-control {% if is_invalid %} is-invalid {% endif %}" id="DefaultLocation"
                 placeholder="Enter asset latitude" required>
-              <input name="default_location_long" type="text" class="form-control" id="DefaultLocation"
-                placeholder="Enter asset longitude" required>
+              <input name="default_location_long" type="text" class="form-control {% if is_invalid %} is-invalid {% endif %}" id="DefaultLocation" placeholder="Enter asset longitude" required>
+
+              {% if is_invalid %}
+                <div class="invalid-feedback">
+                  Please only enter decimal numbers
+                </div>
+              {% endif %}
             </div>
+
 
             <div class="form-group">
               <label for="CurrentLocation">Current Location*</label>
-              <input name="current_location_lat" type="text" class="form-control" id="CurrentLocation"
+              <input name="current_location_lat" type="text " class="form-control {% if is_invalid %} is-invalid {% endif %}" id="CurrentLocation"
                 placeholder="Enter asset latitude" required>
-              <input name="current_location_long" type="text" class="form-control" id="CurrentLocation"
-                placeholder="Enter asset longitude" required>
+              <input name="current_location_long" type="text" class="form-control {% if is_invalid %} is-invalid {% endif %}" id="CurrentLocation" placeholder="Enter asset longitude" required>
+
+              {% if is_invalid %}
+                <div class="invalid-feedback">
+                  Please only enter decimal numbers
+                </div>
+              {% endif %}
             </div>
 
             <div class="form-group">
