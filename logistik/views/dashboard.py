@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 from logistik import app, db
 from logistik.models import Asset, Location, Status
 from logistik.views import login_required
@@ -44,4 +44,4 @@ def create_asset():
     db.session.add(asset)
     db.session.commit()
 
-    return redirect("/new_asset")
+    return redirect(url_for("new_asset"))

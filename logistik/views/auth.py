@@ -1,7 +1,7 @@
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 from sqlalchemy.exc import IntegrityError
-from flask import render_template, request, redirect, make_response
+from flask import render_template, request, redirect, make_response, url_for
 from logistik import app, db
 from logistik.models import User
 
@@ -24,7 +24,7 @@ def authenticate():
 
     try:
         ph.verify(user.password, password)
-        resp = make_response(redirect('/dashboard', 302))
+        resp = make_response(redirect(url_for('dashboard'), 302))
         resp.set_cookie('user', str(user.name))
         return resp
     except (AttributeError, VerifyMismatchError):
@@ -59,4 +59,4 @@ def create_user():
         # User name already taken
         return render_template('auth/register.html', is_taken=True, is_invalid=False)
 
-    return redirect('/login')
+    return redirect(url_for('login'))
